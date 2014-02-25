@@ -8,18 +8,18 @@
 <body>
 <div class="tiles">
     <div class="live-tile two-wide two-tall" id="tile1" data-link="#lnk1">
-		<div style="background-color:red;" id="content1">Loading device properties...</div>
+		<div style="background-color:red;" id="content1" class="tile-title">Loading device properties...</div>
     </div>
     <div class="live-tile two-wide two-tall" id="tile2" data-link="#lnk2">
-        <div style="background-color:green;" id="content2">Accelerometer</div>
+        <div style="background-color:green;" id="content2" class="tile-title">Accelerometer. <br/>Press to get data.</div>
     </div>
     <div class="live-tile two-wide two-tall" id="tile3" data-link="#lnk3">
-        <div style="background-color:orange;" id="content3">Camera.
+        <div style="background-color:orange;" id="content3" class="tile-title">Camera.
 		 <img style="display:none;" id="largeImage" src="" width=300 />
 		</div>
     </div>
     <div class="live-tile two-wide two-tall" id="tile4" data-link="#lnk4">
-        <div style="background-color:blue;" id="content4">Geolocation</div>
+        <div style="background-color:blue;" id="content4" class="tile-title">Geolocation</div>
     </div>
 </div>
 
@@ -42,6 +42,7 @@
 				delay: 0,
 				startNow:false ,
 				click: function($tile, tileData){ 
+					$($tile).html("Processing...");
 					switch(tileData.link){
 						case '#lnk1':
 							onDeviceReady();
@@ -78,17 +79,19 @@
 								'Device Cordova: '  + device.cordova  + '<br />' +
 								'Device Platform: ' + device.platform + '<br />' +
 								'Device UUID: '     + device.uuid     + '<br />' +
-								'Device Version: '  + device.version  + '<br />');
+								'Device Version: '  + device.version  + '<br />' +
+								'<b>Press to refresh data.</b>');
 			pictureSource=navigator.camera.PictureSourceType;
 			destinationType=navigator.camera.DestinationType;
 			}		
 			
 			
 		function onAccSuccess(acceleration) {
-			$('#content2').html('Acceleration X: ' + acceleration.x + '\n' +
-				  'Acceleration Y: ' + acceleration.y + '\n' +
-				  'Acceleration Z: ' + acceleration.z + '\n' +
-				  'Timestamp: '      + acceleration.timestamp + '\n');
+			$('#content2').html('Acceleration X: ' + acceleration.x + '<br/>' +
+				  'Acceleration Y: ' + acceleration.y + '<br/>' +
+				  'Acceleration Z: ' + acceleration.z + '<br/>' +
+				  'Timestamp: '      + acceleration.timestamp + '</br>' +
+				  '<b>Press to refresh data.</b>');
 		};
 
 		function onAccError() {
@@ -117,7 +120,8 @@
 									'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
 									'Heading: '            + position.coords.heading               + '<br />' +
 									'Speed: '              + position.coords.speed                 + '<br />' +
-									'Timestamp: '          + position.timestamp                    + '<br />');
+									'Timestamp: '          + position.timestamp                    + '<br />' +
+									'<b>Press to refresh data.</b>');
 			}
 			function onGeoError(error) {
 				$('#content4').html('code: '    + error.code    + '\n' +
