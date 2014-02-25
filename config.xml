@@ -44,14 +44,8 @@
       <preference name="disallowOverscroll" value="true" />
     -->
     <!-- This is required for native Android hooks -->
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
 
 	<gap:plugin name="org.apache.cordova.device" />	
 	
-	<feature name="Device">
-		<param name="android-package" value="org.apache.cordova.device.Device" />
-	</feature>
 </widget>
 
