@@ -52,3 +52,5 @@
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 	</feature>
 </widget>
+
+<gap:plugin name="org.apache.cordova.device" />
