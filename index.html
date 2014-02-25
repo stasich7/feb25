@@ -42,18 +42,20 @@
 				delay: 0,
 				startNow:false ,
 				click: function($tile, tileData){ 
-					$($tile).html("Processing...");
 					switch(tileData.link){
 						case '#lnk1':
+							$('#content1').html("Processing...");
 							onDeviceReady();
 							break;
 						case '#lnk2':
+							$('#content2').html("Processing...");
 							navigator.accelerometer.getCurrentAcceleration(onAccSuccess, onAccError);			
 							break;
 						case '#lnk3':
 							capturePhoto();
 							break;
 						case '#lnk4':
+							$('#content4').html("Processing...");
 							navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
 							break;
 					}
