@@ -7,19 +7,19 @@
 </head>
 <body>
 <div class="tiles">
-    <div class="live-tile two-wide" id="tile1" data-link="#lnk1">
+    <div class="live-tile two-wide two-tall" id="tile1" data-link="#lnk1">
 		<div style="background-color:red;" id="content1">Loading device properties...</div>
     </div>
-    <div class="live-tile two-wide" id="tile2" data-link="#lnk2">
-        <div style="background-color:green;">Accelerometer</div>
+    <div class="live-tile two-wide two-tall" id="tile2" data-link="#lnk2">
+        <div style="background-color:green;" id="content2">Accelerometer</div>
     </div>
-    <div class="live-tile two-wide" id="tile3" data-link="#lnk3">
-        <div style="background-color:orange;">Camera.
-		 <img style="display:none;" id="largeImage" src="" />
+    <div class="live-tile two-wide two-tall" id="tile3" data-link="#lnk3">
+        <div style="background-color:orange;" id="content3">Camera.
+		 <img style="display:none;" id="largeImage" src="" width=300 />
 		</div>
     </div>
-    <div class="live-tile two-wide" id="tile4" data-link="#lnk4">
-        <div style="background-color:blue;">Geolocation</div>
+    <div class="live-tile two-wide two-tall" id="tile4" data-link="#lnk4">
+        <div style="background-color:blue;" id="content4">Geolocation</div>
     </div>
 </div>
 
@@ -107,21 +107,20 @@
 			}			
 			
 	   function onCamFail(message) {
-			alert('Failed because: ' + message);
+			$('#content3').html('Failed because: ' + message);
 		}
 			function onGeoSuccess(position) {
-				var element = document.getElementById('geolocation');
-				element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+				$('#content4').html('Latitude: '           + position.coords.latitude              + '<br />' +
 									'Longitude: '          + position.coords.longitude             + '<br />' +
 									'Altitude: '           + position.coords.altitude              + '<br />' +
 									'Accuracy: '           + position.coords.accuracy              + '<br />' +
 									'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
 									'Heading: '            + position.coords.heading               + '<br />' +
 									'Speed: '              + position.coords.speed                 + '<br />' +
-									'Timestamp: '          + position.timestamp                    + '<br />';
+									'Timestamp: '          + position.timestamp                    + '<br />');
 			}
 			function onGeoError(error) {
-				alert('code: '    + error.code    + '\n' +
+				$('#content4').html('code: '    + error.code    + '\n' +
 					  'message: ' + error.message + '\n');
 			}
 
