@@ -66,16 +66,16 @@
 							}
 							break;
 						case '#lnk5':
-							// $('#content5').html("Processing...");
-							// if(!oriInProgress){
-								// oriInProgress=1;
-								// startOriWatch();
-							// }
-							// else 
-							// {
-								// $('#content5').html("Orientation");
-								// stopOriWatch();
-							// }
+							$('#content5').html("Processing...");
+							if(!oriInProgress){
+								oriInProgress=1;
+								startOriWatch();
+							}
+							else 
+							{
+								$('#content5').html("Orientation");
+								stopOriWatch();
+							}
 							break;
 					}
 					return true; 
@@ -149,23 +149,23 @@
 				  'message: ' + error.message + '\n');
 			geoInProgress = 0;
 		}
-		// function startOriWatch() {
-				// var options = { frequency: 1000 };
-				// watchID = navigator.compass.watchHeading(onOriSuccess, onOriError, options);
-			// }
-		// function stopOriWatch() {
-				// oriInProgress=0;
-				// if (watchID) {
-					// navigator.compass.clearWatch(watchID);
-					// watchID = null;
-				// }
-			// }
-		// function onOriSuccess(heading) {
-				// $('#content5').html('Heading: ' + heading.magneticHeading);
-			// }
-		// function onOriError(compassError) {
-				// $('#content5').html('Compass error: ' + compassError.code);
-			// }
+		function startOriWatch() {
+				var options = { frequency: 1000 };
+				watchID = navigator.compass.watchHeading(onOriSuccess, onOriError, options);
+			}
+		function stopOriWatch() {
+				oriInProgress=0;
+				if (watchID) {
+					navigator.compass.clearWatch(watchID);
+					watchID = null;
+				}
+			}
+		function onOriSuccess(heading) {
+				$('#content5').html('Heading: ' + heading.magneticHeading);
+			}
+		function onOriError(compassError) {
+				$('#content5').html('Compass error: ' + compassError.code);
+			}
     </script>
 </body>
 </html>
